@@ -17,6 +17,7 @@ export const signUp = async (userData: SignUpParams) => {
     const { email, password, firstName, lastName } = userData;
     
     try {
+      console.log("Admin client created with API key:", process.env.NEXT_APPWRITE_KEY);
       const { account } = await createAdminClient();
   
       const newUserAccount = await account.create(
@@ -34,12 +35,14 @@ export const signUp = async (userData: SignUpParams) => {
         sameSite: "strict",
         secure: true,
       });
-  
+      console.log("New user created:", newUserAccount);
+
       return parseStringify(newUserAccount);
+      
     } catch (error) {
       console.error('Error', error);
     }
-  }
+}
 
 export async function getLoggedInUser() {
     try {
@@ -48,5 +51,4 @@ export async function getLoggedInUser() {
     } catch (error) {
       return null;
     }
-  }
-  
+}
