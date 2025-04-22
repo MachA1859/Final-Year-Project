@@ -64,12 +64,12 @@ const AuthForm = ({type}: {type: string}) => {
             }
 
             if (type === "sign-in"){
-                // const response = await signIn({
-                //     email: data.email,
-                //     password: data.password,
-                // })
+                const response = await signIn({
+                    email: data.email,
+                    password: data.password,
+                })
 
-                // if(response) router.push("/"); 
+                if(response) router.push("/"); 
                 console.log(data);
             }
         } catch (error) {
