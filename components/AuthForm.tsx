@@ -23,6 +23,7 @@ import { authFormSchema } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { getLoggedInUser, signIn, signUp } from '@/lib/actions/user.actions';
+import PlaidLink from './PlaidLink';
 
 const AuthForm = ({type}: {type: string}) => {
     const router = useRouter();
@@ -55,7 +56,20 @@ const AuthForm = ({type}: {type: string}) => {
         
         try {
             // sign up with Appwrite & create Plaid link token
+
             if (type === "sign-up"){
+                const userData = {
+                    firstName: data.firstName!,
+                    lastName: data.lastName!,
+                    address1: data.address1!,
+                    city: data.city!,
+                    county: data.county!,
+                    postalCode: data.postalCode!,
+                    dateOfBirth: data.dateOfBirth!,
+                    nin: data.nin!,
+                    email: data.email,
+                    password: data.password
+                }
 
                 const newUser = await signUp(data);
 
@@ -109,11 +123,11 @@ const AuthForm = ({type}: {type: string}) => {
                     </h1>
                 </div>
             </header>
-            {user ? (
+            {/* {user ? ( */}
                 <div className='flex flex-col gap-4'>
-                    {/* PlaidLink */}
+                    <PlaidLink user= {user} variant="primary" />
                 </div>
-            ): (
+            {/* ): ( */}
                 <>
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -215,7 +229,7 @@ const AuthForm = ({type}: {type: string}) => {
                         </Link>
                     </footer>
                 </>
-            )}
+            {/* )} */}
         </section>
     )
 }
