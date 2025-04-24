@@ -42,10 +42,10 @@ const AuthForm = ({type}: {type: string}) => {
         lastName: "",
         address1: "",
         city: "",
-        county: "",
+        state: "",
         postalCode: "",
         dateOfBirth: "",
-        nin: ""
+        ssn: ""
         },
         
     })
@@ -63,18 +63,18 @@ const AuthForm = ({type}: {type: string}) => {
                     lastName: data.lastName!,
                     address1: data.address1!,
                     city: data.city!,
-                    county: data.county!,
+                    state: data.state!,
                     postalCode: data.postalCode!,
                     dateOfBirth: data.dateOfBirth!,
-                    nin: data.nin!,
+                    ssn: data.ssn!,
                     email: data.email,
                     password: data.password
                 }
 
-                const newUser = await signUp(data);
+                const newUser = await signUp(userData);
 
                 setUser(newUser);
-                console.log(data);
+                console.log(userData);
             }
 
             if (type === "sign-in"){
@@ -123,11 +123,11 @@ const AuthForm = ({type}: {type: string}) => {
                     </h1>
                 </div>
             </header>
-            {/* {user ? ( */}
+            {user ? ( 
                 <div className='flex flex-col gap-4'>
                     <PlaidLink user= {user} variant="primary" />
                 </div>
-            {/* ): ( */}
+            ): (
                 <>
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -162,9 +162,9 @@ const AuthForm = ({type}: {type: string}) => {
                                     <div className='flex gap-4'>
                                         <CustomInput 
                                             control={form.control}
-                                            name="county"
-                                            label="County"
-                                            placeholder="Example: Greater London"
+                                            name="state"
+                                            label="State"
+                                            placeholder="Example: NY"
                                         />
                                         <CustomInput 
                                             control={form.control}
@@ -182,9 +182,9 @@ const AuthForm = ({type}: {type: string}) => {
                                         />
                                         <CustomInput 
                                             control={form.control}
-                                            name="nin"
-                                            label="National Insurance Number"
-                                            placeholder="Example: AB123456C"
+                                            name="ssn"
+                                            label="SSN"
+                                            placeholder="Example: 1234"
                                         />
                                     </div>
                                 </>
@@ -229,7 +229,7 @@ const AuthForm = ({type}: {type: string}) => {
                         </Link>
                     </footer>
                 </>
-            {/* )} */}
+            )}
         </section>
     )
 }
