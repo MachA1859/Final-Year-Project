@@ -103,7 +103,7 @@ const AuthForm = ({type}: {type: string}) => {
                         height={60}
                         alt="MyntPay Logo"
                     />
-                    <h1 className='text-26 font-geist-sans font-bold text-black-1'>MyntPay</h1>
+                    <h1 className='text-26 font-ibm-plex-serif font-bold myntpay-gradient'>MyntPay</h1>
                 </Link>
 
                 <div className='flex flex-col gap-1 md:gap-3'>

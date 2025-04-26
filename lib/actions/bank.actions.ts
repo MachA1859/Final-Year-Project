@@ -75,23 +75,6 @@ export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
     });
     const accountData = accountsResponse.data.accounts[0];
 
-    // get transfer transactions from appwrite
-    const transferTransactionsData = await getTransactionsByBankId({
-      bankId: bank.$id,
-    });
-
-    const transferTransactions = transferTransactionsData.documents.map(
-      (transferData: Transaction) => ({
-        id: transferData.$id,
-        name: transferData.name!,
-        amount: transferData.amount!,
-        date: transferData.$createdAt,
-        paymentChannel: transferData.channel,
-        category: transferData.category,
-        type: transferData.senderBankId === bank.$id ? "debit" : "credit",
-      })
-    );
-
     // get institution info from plaid
     const institution = await getInstitution({
       institutionId: accountsResponse.data.item.institution_id!,
@@ -114,14 +97,9 @@ export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
       appwriteItemId: bank.$id,
     };
 
-    // sort transactions by date such that the most recent transaction is first
-      const allTransactions = [...transactions, ...transferTransactions].sort(
-      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-    );
-
     return parseStringify({
       data: account,
-      transactions: allTransactions,
+      transactions: transactions,
     });
   } catch (error) {
     console.error("An error occurred while getting the account:", error);
@@ -150,36 +128,134 @@ export const getInstitution = async ({
 export const getTransactions = async ({
   accessToken,
 }: getTransactionsProps) => {
-  let hasMore = true;
-  let transactions: any = [];
-
   try {
-    // Iterate through each page of new transaction updates for item
-    while (hasMore) {
-      const response = await plaidClient.transactionsSync({
-        access_token: accessToken,
-      });
+    // Mock transaction data
+    const mockTransactions = [
+      {
+        id: "1",
+        name: "Grocery Store",
+        paymentChannel: "in store",
+        type: "debit",
+        accountId: "123",
+        amount: -45.67,
+        pending: false,
+        category: "Food & Drink",
+        date: "2024-04-25",
+        image: "https://picsum.photos/200"
+      },
+      {
+        id: "2",
+        name: "Salary Deposit",
+        paymentChannel: "direct deposit",
+        type: "credit",
+        accountId: "123",
+        amount: 2500.00,
+        pending: false,
+        category: "Income",
+        date: "2024-04-24",
+        image: "https://picsum.photos/200"
+      },
+      {
+        id: "3",
+        name: "Netflix Subscription",
+        paymentChannel: "online",
+        type: "debit",
+        accountId: "123",
+        amount: -15.99,
+        pending: false,
+        category: "Entertainment",
+        date: "2024-04-23",
+        image: "https://picsum.photos/200"
+      },
+      {
+        id: "4",
+        name: "Gas Station",
+        paymentChannel: "in store",
+        type: "debit",
+        accountId: "123",
+        amount: -35.20,
+        pending: false,
+        category: "Transportation",
+        date: "2024-04-22",
+        image: "https://picsum.photos/200"
+      },
+      {
+        id: "5",
+        name: "Restaurant",
+        paymentChannel: "in store",
+        type: "debit",
+        accountId: "123",
+        amount: -78.50,
+        pending: false,
+        category: "Food & Drink",
+        date: "2024-04-21",
+        image: "https://picsum.photos/200"
+      },
+      {
+        id: "6",
+        name: "Amazon Purchase",
+        paymentChannel: "online",
+        type: "debit",
+        accountId: "123",
+        amount: -120.75,
+        pending: false,
+        category: "Shopping",
+        date: "2024-04-20",
+        image: "https://picsum.photos/200"
+      },
+      {
+        id: "7",
+        name: "Interest Payment",
+        paymentChannel: "direct deposit",
+        type: "credit",
+        accountId: "123",
+        amount: 2.50,
+        pending: false,
+        category: "Income",
+        date: "2024-04-19",
+        image: "https://picsum.photos/200"
+      },
+      {
+        id: "8",
+        name: "Gym Membership",
+        paymentChannel: "direct debit",
+        type: "debit",
+        accountId: "123",
+        amount: -29.99,
+        pending: false,
+        category: "Health & Fitness",
+        date: "2024-04-18",
+        image: "https://picsum.photos/200"
+      },
+      {
+        id: "9",
+        name: "Coffee Shop",
+        paymentChannel: "in store",
+        type: "debit",
+        accountId: "123",
+        amount: -4.50,
+        pending: false,
+        category: "Food & Drink",
+        date: "2024-04-17",
+        image: "https://picsum.photos/200"
+      },
+      {
+        id: "10",
+        name: "Phone Bill",
+        paymentChannel: "direct debit",
+        type: "debit",
+        accountId: "123",
+        amount: -65.00,
+        pending: false,
+        category: "Utilities",
+        date: "2024-04-16",
+        image: "https://picsum.photos/200"
+      }
+    ];
 
-      const data = response.data;
-
-      transactions = response.data.added.map((transaction) => ({
-        id: transaction.transaction_id,
-        name: transaction.name,
-        paymentChannel: transaction.payment_channel,
-        type: transaction.payment_channel,
-        accountId: transaction.account_id,
-        amount: transaction.amount,
-        pending: transaction.pending,
-        category: transaction.category ? transaction.category[0] : "",
-        date: transaction.date,
-        image: transaction.logo_url,
-      }));
-
-      hasMore = data.has_more;
-    }
-
-    return parseStringify(transactions);
+    return parseStringify(mockTransactions);
   } catch (error) {
-    console.error("An error occurred while getting the accounts:", error);
+    console.error("An error occurred while getting the transactions:", error);
+    return [];
   }
 };

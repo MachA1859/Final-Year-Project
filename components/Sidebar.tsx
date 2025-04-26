@@ -20,9 +20,8 @@ const Sidebar = ({user}: SidebarProps) => {
                         height={60}
                         alt="MyntPay Logo"
                         className="size-[48px] max-xl:size-14"
-
                     />
-                    <h1 className='sidebar-logo'>MyntPay</h1>
+                    <h1 className='myntpay-gradient max-xl:hidden'>MyntPay</h1>
                 </Link>
 
                 {sidebarLinks.map((item) => {
@@ -30,7 +29,7 @@ const Sidebar = ({user}: SidebarProps) => {
 
                     return (
                         <Link href={item.route} key={item.label}
-                            className={cn("sidebar-link", { "bg-bank-gradient": isActive })}
+                            className={cn("sidebar-link", { "sidebar-button-gradient": isActive })}
                         >
                             <div className='relative size-6'>
                                 <Image
