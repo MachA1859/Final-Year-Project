@@ -15,6 +15,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import Footer from "./Footer";
+import { Menu } from "lucide-react";
+import { IoAlert } from "react-icons/io5";
 
 const MobileNav = ({user}: MobileNavProps) => {
     const pathname = usePathname();
@@ -22,15 +24,12 @@ const MobileNav = ({user}: MobileNavProps) => {
         <section className="w-full max-w-[264px]">
             <Sheet>
                 <SheetTrigger>
-                    <Image
-                        src="/icons/hamburger.svg"
-                        width={30}
-                        height={30}
-                        alt="menu"
-                        className="cursor-pointer"
-                    />
+                    <Menu size={24} className="cursor-pointer" />
                 </SheetTrigger>
                 <SheetContent side="left" className="border-none bg-white">
+                    <SheetHeader>
+                        <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                    </SheetHeader>
                     <Link href="/" className="cursor-pointer flex items-center gap-1 px-4 pl-10">
                         <Image
                             src="/icons/myntpay_logo-removebg-preview.png"
@@ -47,24 +46,31 @@ const MobileNav = ({user}: MobileNavProps) => {
                                     const isActive = pathname === item.route || pathname.startsWith(`${item.route}/`);
 
                                     return (
-                                        <SheetClose asChild key={item.route}>
-                                            <Link href={item.route}
-                                                className={cn("mobilenav-sheet_close w-full", {"sidebar-button-gradient": isActive})}
-                                            >
+                                        <Link href={item.route} key={item.label}
+                                            className={cn("mobilenav-sheet_close w-full", { "sidebar-button-gradient": isActive })}
+                                        >
+                                            <div className="relative size-6">
+                                                {item.icon ? (
+                                                    <IoAlert 
+                                                        className={cn("size-6 text-gray-600", {
+                                                            'text-white': isActive
+                                                        })}
+                                                    />
+                                                ) : item.imgURL ? (
                                                     <Image
                                                         src={item.imgURL}
                                                         alt={item.label}
-                                                        width={20}
-                                                        height={20}
+                                                        fill
                                                         className={cn({
                                                             'brightness-[3] invert-0': isActive
                                                         })}
                                                     />
-                                                <p className={cn("text-16 font-semibold text-black-2", {"text-white": isActive})}>
-                                                    {item.label}
-                                                </p>
-                                            </Link>
-                                        </SheetClose>
+                                                ) : null}
+                                            </div>
+                                            <p className={cn("text-16 font-semibold text-black-2", { "!text-white": isActive })}>
+                                                {item.label}
+                                            </p>
+                                        </Link>
                                     )
                                 })}
 

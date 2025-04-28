@@ -1,13 +1,17 @@
 import React from 'react'
 import CryptoMarketWidget from '@/components/CryptoMarketWidget'
 import CryptoAttributionFooter from '@/components/CryptoAttributionFooter'
+import HeaderBox from '@/components/HeaderBox'
 
 const Cryptocurrency = () => {
   return (
     <div className="flex min-h-screen">
       <div className="flex-1 p-8">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-3xl font-bold mb-8">Cryptocurrency Market</h1>
+          <HeaderBox 
+            title="Cryptocurrency Market"
+            subtext="Track and monitor cryptocurrency prices and market trends in real-time."
+          />
           <CryptoMarketWidget />
           <CryptoAttributionFooter />
         </div>

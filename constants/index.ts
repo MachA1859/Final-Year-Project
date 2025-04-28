@@ -20,6 +20,11 @@ export const sidebarLinks = [
     label: "Transfer Funds",
   },
   {
+    icon: "IoAlert",
+    route: "/alerts",
+    label: "Alerts",
+  },
+  {
     imgURL: "/icons/dollar.svg",
     route: "/cryptocurrency",
     label: "Crypto",

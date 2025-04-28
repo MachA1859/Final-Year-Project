@@ -6,6 +6,7 @@ import { sidebarLinks } from '@/constants'
 import { cn } from '@/lib/utils'
 import { usePathname } from 'next/navigation'
 import Footer from './Footer';
+import { IoAlert } from "react-icons/io5";
 
 const Sidebar = ({user}: SidebarProps) => {
     const pathname = usePathname();
@@ -32,23 +33,29 @@ const Sidebar = ({user}: SidebarProps) => {
                             className={cn("sidebar-link", { "sidebar-button-gradient": isActive })}
                         >
                             <div className='relative size-6'>
-                                <Image
-                                    src={item.imgURL}
-                                    alt={item.label}
-                                    fill
-                                    className={cn({
-                                        'brightness-[3] invert-0': isActive
-                                    })}
-                                />
+                                {item.icon ? (
+                                    <IoAlert 
+                                        className={cn("size-6 text-gray-600", {
+                                            'text-white': isActive
+                                        })}
+                                    />
+                                ) : item.imgURL ? (
+                                    <Image
+                                        src={item.imgURL}
+                                        alt={item.label}
+                                        fill
+                                        className={cn({
+                                            'brightness-[3] invert-0': isActive
+                                        })}
+                                    />
+                                ) : null}
                             </div>
                             <p className={cn("sidebar-label", {"!text-white": isActive})}>
                                 {item.label}
                             </p>
                         </Link>
-                        )
-                    })
-                }
-                USER
+                    )
+                })}
             </nav>
                 
             <Footer user={user} />

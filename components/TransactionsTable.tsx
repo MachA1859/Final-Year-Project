@@ -13,6 +13,8 @@ import { transactionCategoryStyles } from "@/constants"
 import { cn, formatAmount, formatDateTime, getTransactionStatus, removeSpecialCharacters } from "@/lib/utils"
 import { useEffect, useState } from "react"
 import { Transaction } from "@/lib/types"
+import { Button } from "@/components/ui/button"
+import { usePathname } from 'next/navigation'
 
 interface CategoryBadgeProps {
   category: string;
@@ -40,6 +42,7 @@ const CategoryBadge = ({ category }: CategoryBadgeProps) => {
 
 const TransactionsTable = ({ transactions }: TransactionTableProps) => {
   const [transactionsWithSuspicious, setTransactionsWithSuspicious] = useState<Transaction[]>([]);
+  const pathname = usePathname();
 
   useEffect(() => {
     async function checkSuspicious() {
@@ -68,6 +71,13 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
     checkSuspicious();
   }, [transactions]);
 
+  const handleRemove = (transactionId: string) => {
+    // Remove the transaction from the list
+    setTransactionsWithSuspicious(prev => 
+      prev.filter(tx => tx.id !== transactionId)
+    );
+  };
+
   return (
     <Table>
       <TableHeader className="bg-[#f9fafb]">
@@ -78,7 +88,10 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
           <TableHead className="px-2">Date</TableHead>
           <TableHead className="px-2 max-md:hidden">Channel</TableHead>
           <TableHead className="px-2 max-md:hidden">Category</TableHead>
-          <TableHead className="px-2">Suspicious</TableHead>
+          <TableHead className="px-2">Suspicion</TableHead>
+          {pathname === '/alerts' && (
+            <TableHead className="px-2">Action</TableHead>
+          )}
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -139,6 +152,17 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
                   {t.suspiciousProbability?.toFixed(1) || '0.0'}%
                 </div>
               </TableCell>
+              {pathname === '/alerts' && (
+                <TableCell className="pl-2 pr-10">
+                  <Button 
+                    className="bg-[#DC2626] hover:bg-[#DC2626]/90 text-white"
+                    size="sm"
+                    onClick={() => handleRemove(t.id)}
+                  >
+                    Remove
+                  </Button>
+                </TableCell>
+              )}
             </TableRow>
           )
         })}
