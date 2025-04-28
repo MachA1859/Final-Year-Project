@@ -101,6 +101,12 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
 
           const isDebit = t.type === 'debit';
           const isCredit = t.type === 'credit';
+          const isSuspicious = t.suspiciousProbability && t.suspiciousProbability > 50;
+
+          // Skip rendering if on alerts page and transaction is not suspicious
+          if (pathname === '/alerts' && !isSuspicious) {
+            return null;
+          }
 
           return (
             <TableRow key={t.id} className={`${isDebit || amount[0] === '-' ? 'bg-[#FFFBFA]' : 'bg-[#F6FEF9]'} hover:!bg-none border-b-DEFAULT`}>
@@ -145,7 +151,7 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
 
               <TableCell className="pl-2 pr-10">
                 <div className={`font-semibold ${
-                  t.suspiciousProbability && t.suspiciousProbability > 50 
+                  isSuspicious 
                     ? 'text-red-600' 
                     : 'text-green-600'
                 }`}>

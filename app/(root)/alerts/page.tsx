@@ -3,8 +3,16 @@ import HeaderBox from '@/components/HeaderBox'
 import TransactionsTable from '@/components/TransactionsTable';
 import { mockTransactions } from '@/mynt_condition/mockTransactions';
 import { Transaction } from '@/lib/types';
+import Pagination from '@/components/Pagination';
 
-const Alerts = async ({ searchParams: { id, page }}: SearchParamProps) => {
+interface SearchParamProps {
+  searchParams: { 
+    id: string;
+    page: string | string[] | undefined;
+  }
+}
+
+const Alerts = async ({ searchParams: { id, page = '1' }}: SearchParamProps) => {
   // Convert mock transactions to the correct type
   const typedTransactions: Transaction[] = mockTransactions.map(transaction => ({
     id: transaction.id,
@@ -16,6 +24,15 @@ const Alerts = async ({ searchParams: { id, page }}: SearchParamProps) => {
     paymentChannel: transaction.paymentChannel,
     image: transaction.image
   }));
+
+  // Pagination logic
+  const currentPage = Number(page);
+  const pageSize = 10;
+  const totalPages = Math.ceil(typedTransactions.length / pageSize);
+  const paginatedTransactions = typedTransactions.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  );
 
   return (
     <div className="transactions">
@@ -40,8 +57,17 @@ const Alerts = async ({ searchParams: { id, page }}: SearchParamProps) => {
 
         <section className="flex w-full flex-col gap-6">
           <TransactionsTable 
-            transactions={typedTransactions}
+            transactions={paginatedTransactions}
           />
+          
+          {totalPages > 1 && (
+            <div className="my-4 w-full">
+              <Pagination 
+                totalPages={totalPages}
+                page={currentPage}
+              />
+            </div>
+          )}
         </section>
       </div>
     </div>
