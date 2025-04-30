@@ -63,7 +63,7 @@ const RecentTransactions = ({
                         <Pagination 
                           totalPages={totalPages} 
                           page={page}
-                          baseUrl={`/transaction-history?id=${appwriteItemId}`}
+                          baseUrl="/"
                         />
                       </div>
                     )}

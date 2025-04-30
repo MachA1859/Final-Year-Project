@@ -70,6 +70,14 @@ export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
     // get bank from db
     const bank = await getBank({ documentId: appwriteItemId });
 
+    if (!bank || !bank.accessToken) {
+      console.error("Bank or access token not found");
+      return parseStringify({
+        data: null,
+        transactions: mockTransactionsWithSuspicion,
+      });
+    }
+
     // get account info from plaid
     const accountsResponse = await plaidClient.accountsGet({
       access_token: bank.accessToken,
@@ -82,7 +90,7 @@ export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
     });
 
     const transactions = await getTransactions({
-      accessToken: bank?.accessToken,
+      accessToken: bank.accessToken,
     });
 
     const account = {
@@ -104,6 +112,10 @@ export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
     });
   } catch (error) {
     console.error("An error occurred while getting the account:", error);
+    return parseStringify({
+      data: null,
+      transactions: mockTransactionsWithSuspicion,
+    });
   }
 };
 
