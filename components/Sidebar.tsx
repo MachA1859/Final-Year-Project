@@ -40,21 +40,21 @@ const Sidebar = ({user}: SidebarProps) => {
                                         })}
                                     />
                                 ) : item.imgURL ? (
-                                    <Image
-                                        src={item.imgURL}
-                                        alt={item.label}
-                                        fill
-                                        className={cn({
-                                            'brightness-[3] invert-0': isActive
-                                        })}
-                                    />
+                                <Image
+                                    src={item.imgURL}
+                                    alt={item.label}
+                                    fill
+                                    className={cn({
+                                        'brightness-[3] invert-0': isActive
+                                    })}
+                                />
                                 ) : null}
                             </div>
                             <p className={cn("sidebar-label", {"!text-white": isActive})}>
                                 {item.label}
                             </p>
                         </Link>
-                    )
+                        )
                 })}
             </nav>
                 

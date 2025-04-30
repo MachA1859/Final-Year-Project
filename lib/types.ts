@@ -8,4 +8,6 @@ export interface Transaction {
   paymentChannel: string;
   suspiciousProbability?: number;
   image?: string;
+  pending?: boolean;
+  accountId?: string;
 } 

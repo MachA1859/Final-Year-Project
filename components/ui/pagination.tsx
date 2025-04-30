@@ -6,16 +6,17 @@ import { useSearchParams } from 'next/navigation';
 interface PaginationProps {
   totalPages: number;
   page: number;
+  baseUrl?: string;
 }
 
-const Pagination = ({ totalPages, page }: PaginationProps) => {
+const Pagination = ({ totalPages, page, baseUrl = '' }: PaginationProps) => {
   const searchParams = useSearchParams();
   const currentPage = page || 1;
 
   const createPageURL = (pageNumber: number | string) => {
     const params = new URLSearchParams(searchParams);
     params.set('page', pageNumber.toString());
-    return `?${params.toString()}`;
+    return `${baseUrl}?${params.toString()}`;
   };
 
   return (

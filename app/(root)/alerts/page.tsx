@@ -1,7 +1,7 @@
 import React from 'react'
 import HeaderBox from '@/components/HeaderBox'
 import TransactionsTable from '@/components/TransactionsTable';
-import { mockTransactions } from '@/mynt_condition/mockTransactions';
+import { mockTransactionsWithSuspicion } from "@/mynt_condition/suspicion_model/mockTransactionsWithSuspicion";
 import { Transaction } from '@/lib/types';
 import Pagination from '@/components/Pagination';
 
@@ -14,22 +14,18 @@ interface SearchParamProps {
 
 const Alerts = async ({ searchParams: { id, page = '1' }}: SearchParamProps) => {
   // Convert mock transactions to the correct type
-  const typedTransactions: Transaction[] = mockTransactions.map(transaction => ({
-    id: transaction.id,
-    name: transaction.name,
-    amount: transaction.amount,
-    type: transaction.type as 'credit' | 'debit',
-    category: transaction.category,
-    date: transaction.date,
-    paymentChannel: transaction.paymentChannel,
-    image: transaction.image
+  const transactions = mockTransactionsWithSuspicion.map((transaction) => ({
+    ...transaction,
+    suspiciousProbability: transaction.suspiciousProbability,
+    model_score: transaction.model_score,
+    amount_score: transaction.amount_score,
   }));
 
   // Pagination logic
   const currentPage = Number(page);
   const pageSize = 10;
-  const totalPages = Math.ceil(typedTransactions.length / pageSize);
-  const paginatedTransactions = typedTransactions.slice(
+  const totalPages = Math.ceil(transactions.length / pageSize);
+  const paginatedTransactions = transactions.slice(
     (currentPage - 1) * pageSize,
     currentPage * pageSize
   );

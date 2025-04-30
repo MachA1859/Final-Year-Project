@@ -2,6 +2,7 @@ import HeaderBox from '@/components/HeaderBox'
 import RecentTransactions from '@/components/RecentTransactions';
 import RightSidebar from '@/components/RightSidebar';
 import TotalBalanceBox from '@/components/TotalBalanceBox';
+import { TestTransactionButton } from '@/components/TestTransactionButton';
 import { getAccount, getAccounts } from '@/lib/actions/bank.actions';
 import { getLoggedInUser } from '@/lib/actions/user.actions';
 
@@ -43,6 +44,8 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
           appwriteItemId={appwriteItemId}
           page={currentPage}
         />
+
+        <TestTransactionButton />
       </div>
 
       <RightSidebar 

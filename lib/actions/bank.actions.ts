@@ -11,7 +11,7 @@ import {
 
 import { plaidClient } from "../plaid";
 import { parseStringify } from "../utils";
-import { mockTransactions } from "../../mynt_condition/mockTransactions";
+import { mockTransactionsWithSuspicion } from "../../mynt_condition/suspicion_model/mockTransactionsWithSuspicion";
 
 // import { getTransactionsByBankId } from "./transaction.actions";
 import { getBanks, getBank } from "./user.actions";
@@ -130,7 +130,8 @@ export const getTransactions = async ({
   accessToken,
 }: getTransactionsProps) => {
   try {
-    return parseStringify(mockTransactions);
+    // Return all transactions without pagination
+    return mockTransactionsWithSuspicion;
   } catch (error) {
     console.error("An error occurred while getting the transactions:", error);
     return [];

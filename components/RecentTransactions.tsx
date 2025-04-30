@@ -4,6 +4,7 @@ import { BankTabItem } from './BankTabItem'
 import BankInfo from './BankInfo'
 import TransactionsTable from './TransactionsTable'
 import Pagination from '@/components/ui/pagination';
+import { Transaction } from '@/lib/types';
 
 const RecentTransactions = ({
     accounts,
@@ -17,7 +18,7 @@ const RecentTransactions = ({
   const indexOfLastTransaction = page * rowsPerPage;
   const indexOfFirstTransaction = indexOfLastTransaction - rowsPerPage;
 
-  const currentTransactions = transactions?.slice(
+  const currentTransactions = (transactions as Transaction[])?.slice(
     indexOfFirstTransaction, indexOfLastTransaction
   );
 
@@ -27,7 +28,7 @@ const RecentTransactions = ({
             <h2 className='recent-transactions-label'>
                 Recent Transactions
             </h2>
-            <Link href={`/transaction-history?id=${appwriteItemId}`} className='view-all-btn'>
+            <Link href={`/transaction-history?id=${appwriteItemId}&page=${page}`} className='view-all-btn'>
                 View All
             </Link>
         </header>
@@ -59,7 +60,11 @@ const RecentTransactions = ({
                     <TransactionsTable transactions={currentTransactions} />
                     {totalPages > 1 && (
                       <div className="my-4 w-full">
-                        <Pagination totalPages={totalPages} page={page} />
+                        <Pagination 
+                          totalPages={totalPages} 
+                          page={page}
+                          baseUrl={`/transaction-history?id=${appwriteItemId}`}
+                        />
                       </div>
                     )}
                 </TabsContent>

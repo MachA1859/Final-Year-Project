@@ -15,64 +15,28 @@ import { useEffect, useState } from "react"
 import { Transaction } from "@/lib/types"
 import { Button } from "@/components/ui/button"
 import { usePathname } from 'next/navigation'
-
-interface CategoryBadgeProps {
-  category: string;
-}
+import { CategoryBadge } from './CategoryBadge'
 
 interface TransactionTableProps {
-  transactions: Transaction[];
+  transactions: Transaction[]
 }
 
-const CategoryBadge = ({ category }: CategoryBadgeProps) => {
-  const {
-    borderColor,
-    backgroundColor,
-    textColor,
-    chipBackgroundColor,
-   } = transactionCategoryStyles[category as keyof typeof transactionCategoryStyles] || transactionCategoryStyles.default
-   
-  return (
-    <div className={cn('category-badge', borderColor, chipBackgroundColor)}>
-      <div className={cn('size-2 rounded-full', backgroundColor)} />
-      <p className={cn('text-[12px] font-medium', textColor)}>{category}</p>
-    </div>
-  )
-} 
+interface SuspiciousTransaction extends Transaction {
+  suspiciousProbability?: number;
+  model_score?: number;
+  amount_score?: number;
+}
 
 const TransactionsTable = ({ transactions }: TransactionTableProps) => {
-  const [transactionsWithSuspicious, setTransactionsWithSuspicious] = useState<Transaction[]>([]);
+  const [transactionsWithSuspicious, setTransactionsWithSuspicious] = useState<SuspiciousTransaction[]>([]);
   const pathname = usePathname();
 
   useEffect(() => {
-    async function checkSuspicious() {
-      const updated = await Promise.all(transactions.map(async (tx) => {
-        const hour = new Date(tx.date).getHours();
-        try {
-          const res = await fetch('/api/checkTransaction', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-              amount: Math.abs(tx.amount), // Use absolute value since we care about magnitude
-              hour 
-            }),
-          });
-          const data = await res.json();
-          return { ...tx, suspiciousProbability: parseFloat(data.suspiciousProbability) };
-        } catch (error) {
-          console.error('Error checking transaction suspiciousness:', error);
-          return { ...tx, suspiciousProbability: 0 }; // Default to 0 if check fails
-        }
-      }));
-
-      setTransactionsWithSuspicious(updated);
-    }
-
-    checkSuspicious();
+    // Assume transactions already have suspicion data
+    setTransactionsWithSuspicious(transactions as SuspiciousTransaction[]);
   }, [transactions]);
 
   const handleRemove = (transactionId: string) => {
-    // Remove the transaction from the list
     setTransactionsWithSuspicious(prev => 
       prev.filter(tx => tx.id !== transactionId)
     );
@@ -101,7 +65,7 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
 
           const isDebit = t.type === 'debit';
           const isCredit = t.type === 'credit';
-          const isSuspicious = t.suspiciousProbability && t.suspiciousProbability > 50;
+          const isSuspicious = t.suspiciousProbability && t.suspiciousProbability > 5;
 
           // Skip rendering if on alerts page and transaction is not suspicious
           if (pathname === '/alerts' && !isSuspicious) {
@@ -155,9 +119,10 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
                     ? 'text-red-600' 
                     : 'text-green-600'
                 }`}>
-                  {t.suspiciousProbability?.toFixed(1) || '0.0'}%
+                  {t.suspiciousProbability?.toFixed(1) || '0.0'}
                 </div>
               </TableCell>
+
               {pathname === '/alerts' && (
                 <TableCell className="pl-2 pr-10">
                   <Button 
@@ -170,11 +135,11 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
                 </TableCell>
               )}
             </TableRow>
-          )
+          );
         })}
       </TableBody>
     </Table>
-  )
-}
+  );
+};
 
 export default TransactionsTable
