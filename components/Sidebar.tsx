@@ -7,9 +7,12 @@ import { cn } from '@/lib/utils'
 import { usePathname } from 'next/navigation'
 import Footer from './Footer';
 import { IoAlert } from "react-icons/io5";
+import { useTheme } from '@/context/ThemeContext';
+import { Switch } from '@/components/ui/switch';
 
 const Sidebar = ({user}: SidebarProps) => {
     const pathname = usePathname();
+    const { isDarkMode, toggleDarkMode } = useTheme();
 
     return (
         <section className="sidebar">
@@ -57,6 +60,15 @@ const Sidebar = ({user}: SidebarProps) => {
                         )
                 })}
             </nav>
+
+            <div className="flex items-center justify-between px-4 py-2 mb-4">
+                <span className="text-14 font-medium text-gray-700 dark:text-gray-300">Dark Mode</span>
+                <Switch
+                    checked={isDarkMode}
+                    onCheckedChange={toggleDarkMode}
+                    className="data-[state=checked]:bg-primary"
+                />
+            </div>
                 
             <Footer user={user} />
         </section>

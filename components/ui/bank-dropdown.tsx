@@ -39,21 +39,21 @@ const BankDropdown = ({ accounts, setValue, otherStyles }: BankDropdownProps) =>
   return (
     <Select.Root value={value} onValueChange={setValueState}>
       <Select.Trigger
-        className={`inline-flex h-[35px] w-full items-center justify-between gap-[5px] rounded bg-white px-[15px] text-[13px] leading-none text-violet11 shadow-[0_2px_10px] shadow-black/10 outline-none hover:bg-mauve3 focus:shadow-[0_0_0_2px] focus:shadow-black data-[placeholder]:text-violet9 ${otherStyles || ''}`}
+        className={`bank-dropdown ${otherStyles || ''}`}
       >
         <Select.Value placeholder="Select a bank to transfer funds from" />
-        <Select.Icon className="text-violet11">
+        <Select.Icon className="text-gray-900 dark:text-[#F1F1F1]">
           <ChevronDown />
         </Select.Icon>
       </Select.Trigger>
       <Select.Portal>
-        <Select.Content className="overflow-hidden rounded-md bg-white shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)]">
+        <Select.Content className="bank-dropdown-content">
           <Select.Viewport className="p-[5px]">
             {accounts.map((account) => (
               <SelectItem key={account.id} value={account.id}>
                 <div className="flex flex-col">
-                  <p className="text-16 font-medium">{account.name}</p>
-                  <p className="text-14 text-gray-600">{account.bankName}</p>
+                  <p className="text-16 font-medium dark:text-[#F1F1F1]">{account.name}</p>
+                  <p className="text-14 text-gray-600 dark:text-[#E0E0E0]">{account.bankName}</p>
                 </div>
               </SelectItem>
             ))}
@@ -73,7 +73,7 @@ const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
       <Select.Item
-        className={`relative flex h-[25px] select-none items-center rounded-[3px] pl-[25px] pr-[35px] text-[13px] leading-none text-violet11 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[disabled]:text-mauve8 data-[highlighted]:text-violet1 data-[highlighted]:outline-none ${className || ''}`}
+        className={`bank-dropdown-item ${className || ''}`}
         {...props}
         ref={forwardedRef}
       >

@@ -5,8 +5,8 @@ import HeaderBox from '@/components/HeaderBox'
 
 const Cryptocurrency = () => {
   return (
-    <div className="flex min-h-screen">
-      <div className="flex-1 p-8">
+    <div className="flex h-screen overflow-hidden">
+      <div className="flex-1 p-8 overflow-y-auto no-scrollbar">
         <div className="max-w-7xl mx-auto">
           <HeaderBox 
             title="Cryptocurrency Market"

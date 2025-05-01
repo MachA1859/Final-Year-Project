@@ -13,6 +13,8 @@ const {
   APPWRITE_DATABASE_ID: DATABASE_ID,
   APPWRITE_USER_COLLECTION_ID: USER_COLLECTION_ID,
   APPWRITE_BANK_COLLECTION_ID: BANK_COLLECTION_ID,
+  APPWRITE_SEND_OTP_FUNCTION_ID: SEND_OTP_FUNCTION_ID,
+  APPWRITE_VERIFY_OTP_FUNCTION_ID: VERIFY_OTP_FUNCTION_ID,
 } = process.env;
 
 export const getUserInfo = async ({userId}: getUserInfoProps) => {
@@ -36,19 +38,49 @@ export const signIn = async ({email, password}: signInProps) => {
       const { account } = await createAdminClient();
       const session = await account.createEmailPasswordSession(email, password);
   
+      // Set the session cookie
       (await cookies()).set("appwrite-session", session.secret, {
         path: "/",
         httpOnly: true,
         sameSite: "strict",
         secure: true,
       });
-      
-      const user = await getUserInfo({userId: session.userId});
 
-      return parseStringify(user);
+      return {
+        session
+      };
     } catch (error) {
         console.error("Error", error);
+        throw error;
     }
+}
+
+export const verifyOTP = async ({userId, otp}: {userId: string, otp: string}) => {
+  try {
+    const { functions } = await createAdminClient();
+    
+    const verifyOTPResponse = await functions.createExecution(
+      VERIFY_OTP_FUNCTION_ID!,
+      JSON.stringify({ userId, otp })
+    );
+
+    console.log('Verify OTP Response:', verifyOTPResponse);
+
+    if (!verifyOTPResponse || !verifyOTPResponse.responseBody) {
+      throw new Error('Failed to verify OTP');
+    }
+
+    const verificationResponse = JSON.parse(verifyOTPResponse.responseBody);
+    
+    if (!verificationResponse.success) {
+      throw new Error(verificationResponse.message);
+    }
+
+    return verificationResponse;
+  } catch (error) {
+    console.error("Error verifying OTP", error);
+    throw error;
+  }
 }
 
 export const signUp = async ({password, ...userData}: SignUpParams) => {

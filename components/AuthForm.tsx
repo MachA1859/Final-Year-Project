@@ -25,7 +25,7 @@ import { useRouter } from 'next/navigation';
 import { getLoggedInUser, signIn, signUp } from '@/lib/actions/user.actions';
 import PlaidLink from './PlaidLink';
 
-const AuthForm = ({type}: {type: string}) => {
+const AuthForm = ({type, onSubmit: externalOnSubmit}: {type: string, onSubmit?: (data: any) => Promise<void>}) => {
     const router = useRouter();
     const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -47,7 +47,6 @@ const AuthForm = ({type}: {type: string}) => {
         dateOfBirth: "",
         ssn: ""
         },
-        
     })
     
     // 2. Define a submit handler.
@@ -55,36 +54,36 @@ const AuthForm = ({type}: {type: string}) => {
         setIsLoading(true);
         
         try {
-            // sign up with Appwrite & create Plaid link token
+            if (externalOnSubmit) {
+                await externalOnSubmit(data);
+            } else {
+                // Default behavior
+                if (type === "sign-up"){
+                    const userData = {
+                        firstName: data.firstName!,
+                        lastName: data.lastName!,
+                        address1: data.address1!,
+                        city: data.city!,
+                        state: data.state!,
+                        postalCode: data.postalCode!,
+                        dateOfBirth: data.dateOfBirth!,
+                        ssn: data.ssn!,
+                        email: data.email,
+                        password: data.password
+                    }
 
-            if (type === "sign-up"){
-                const userData = {
-                    firstName: data.firstName!,
-                    lastName: data.lastName!,
-                    address1: data.address1!,
-                    city: data.city!,
-                    state: data.state!,
-                    postalCode: data.postalCode!,
-                    dateOfBirth: data.dateOfBirth!,
-                    ssn: data.ssn!,
-                    email: data.email,
-                    password: data.password
+                    const newUser = await signUp(userData);
+                    setUser(newUser);
                 }
 
-                const newUser = await signUp(userData);
+                if (type === "sign-in"){
+                    const response = await signIn({
+                        email: data.email,
+                        password: data.password,
+                    })
 
-                setUser(newUser);
-                console.log(userData);
-            }
-
-            if (type === "sign-in"){
-                const response = await signIn({
-                    email: data.email,
-                    password: data.password,
-                })
-
-                if(response) router.push("/"); 
-                console.log(data);
+                    if(response) router.push("/"); 
+                }
             }
         } catch (error) {
             console.log(error);

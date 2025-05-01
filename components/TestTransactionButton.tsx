@@ -36,7 +36,7 @@ export function TestTransactionButton() {
       <DialogTrigger asChild>
         <Button 
           variant="default" 
-          className="mt-4 bg-white text-black hover:bg-gray-100 border border-gray-200"
+          className="mt-4 bg-white text-black hover:bg-gray-100 border border-gray-200 dark:bg-[#1e1e1e] dark:text-white dark:border-[#333]"
         >
           Test Transaction Fetch
         </Button>

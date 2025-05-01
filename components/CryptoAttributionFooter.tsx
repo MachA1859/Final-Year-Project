@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const CryptoAttributionFooter = () => {
   return (
-    <div className="mt-8 pt-8 border-t border-gray-200">
+    <div className="mt-8 pt-8 border-t border-gray-200 dark:border-[#1e1e1e]">
       <div className="flex flex-col items-center gap-4">
         <p className="text-sm text-gray-500">
           Data provided by{' '}

@@ -43,9 +43,9 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
   };
 
   return (
-    <Table>
-      <TableHeader className="bg-[#f9fafb]">
-        <TableRow>
+    <Table className="dark:border dark:border-[#333]">
+      <TableHeader className="bg-[#f9fafb] dark:bg-[#1a1a1a] border-b border-[#333]">
+        <TableRow className="border-b-0">
           <TableHead className="px-2">Transaction</TableHead>
           <TableHead className="px-2">Amount</TableHead>
           <TableHead className="px-2">Status</TableHead>
@@ -73,8 +73,12 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
           }
 
           return (
-            <TableRow key={t.id} className={`${isDebit || amount[0] === '-' ? 'bg-[#FFFBFA]' : 'bg-[#F6FEF9]'} hover:!bg-none border-b-DEFAULT`}>
-              <TableCell className="max-w-[250px] pl-2 pr-10">
+            <TableRow key={t.id} className={`${
+              isDebit || amount[0] === '-' 
+                ? 'bg-[#FFFBFA] dark:bg-[#2A1A1A]' 
+                : 'bg-[#F6FEF9] dark:bg-[#1A2A1A]'
+            } hover:!bg-none border-b dark:border-[#333]`}>
+              <TableCell className="max-w-[250px] pl-2 pr-10 dark:text-[#E0E0E0]">
                 <div className="flex items-center gap-3">
                   {t.image && (
                     <img 
@@ -83,7 +87,7 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
                       className="size-8 rounded-full object-cover"
                     />
                   )}
-                  <h1 className="text-14 truncate font-semibold text-[#344054]">
+                  <h1 className="text-14 truncate font-semibold text-[#344054] dark:text-[#E0E0E0]">
                     {removeSpecialCharacters(t.name)}
                   </h1>
                 </div>
@@ -101,11 +105,11 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
                 <CategoryBadge category={status} /> 
               </TableCell>
 
-              <TableCell className="min-w-32 pl-2 pr-10">
+              <TableCell className="min-w-32 pl-2 pr-10 dark:text-[#E0E0E0]">
                 {formatDateTime(new Date(t.date)).dateTime}
               </TableCell>
 
-              <TableCell className="pl-2 pr-10 capitalize min-w-24">
+              <TableCell className="pl-2 pr-10 capitalize min-w-24 dark:text-[#E0E0E0]">
                {t.paymentChannel}
               </TableCell>
 
@@ -126,7 +130,7 @@ const TransactionsTable = ({ transactions }: TransactionTableProps) => {
               {pathname === '/alerts' && (
                 <TableCell className="pl-2 pr-10">
                   <Button 
-                    className="bg-[#DC2626] hover:bg-[#DC2626]/90 text-white"
+                    className="bg-red-600 hover:bg-red-700 text-white dark:bg-red-600 dark:hover:bg-red-700"
                     size="sm"
                     onClick={() => handleRemove(t.id)}
                   >

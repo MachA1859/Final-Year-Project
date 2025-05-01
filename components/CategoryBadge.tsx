@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils'
+import { transactionCategoryStyles as importedStyles } from '@/constants'
 
 interface CategoryBadgeProps {
   category: string;
@@ -68,12 +69,13 @@ const transactionCategoryStyles = {
 }
 
 export const CategoryBadge = ({ category }: CategoryBadgeProps) => {
+  const styles = category === 'Success' ? importedStyles : transactionCategoryStyles;
   const {
     borderColor,
     backgroundColor,
     textColor,
     chipBackgroundColor,
-  } = transactionCategoryStyles[category as keyof typeof transactionCategoryStyles] || transactionCategoryStyles.default
+  } = styles[category as keyof typeof styles] || styles.default
   
   return (
     <div className={cn('category-badge', borderColor, chipBackgroundColor)}>

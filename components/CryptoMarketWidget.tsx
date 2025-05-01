@@ -58,7 +58,7 @@ const CryptoMarketWidget = () => {
         return (
           <div
             key={coin.id}
-            className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300"
+            className="bg-white dark:bg-[#1e1e1e] rounded-2xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300"
           >
             <div className="flex items-center gap-4 mb-4">
               <img

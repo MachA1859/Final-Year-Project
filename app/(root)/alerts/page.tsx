@@ -3,7 +3,7 @@ import HeaderBox from '@/components/HeaderBox'
 import TransactionsTable from '@/components/TransactionsTable';
 import { mockTransactionsWithSuspicion } from "@/mynt_condition/suspicion_model/mockTransactionsWithSuspicion";
 import { Transaction } from '@/lib/types';
-import Pagination from '@/components/Pagination';
+import Pagination from '@/components/ui/pagination';
 
 interface SearchParamProps {
   searchParams: { 
@@ -31,7 +31,7 @@ const Alerts = async ({ searchParams: { id, page = '1' }}: SearchParamProps) => 
   );
 
   return (
-    <div className="transactions">
+    <div className="transactions no-scrollbar">
       <div className="transactions-header">
         <HeaderBox 
           title="Alerts"

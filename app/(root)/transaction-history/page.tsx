@@ -37,7 +37,7 @@ const TransactionHistory = async ({ searchParams: { id, page }}:SearchParamProps
   );
 
   return (
-    <div className="transactions">
+    <div className="transactions no-scrollbar">
       <div className="transactions-header">
         <HeaderBox 
           title="Transaction History"
@@ -46,10 +46,10 @@ const TransactionHistory = async ({ searchParams: { id, page }}:SearchParamProps
       </div>
 
       <div className="space-y-6">
-        <div className="transactions-account">
+        <div className="transactions-account bg-gradient-to-r from-[#7F56D9] to-[#D9569D]">
           <div className="flex flex-col gap-2">
             <h2 className="text-18 font-bold text-white">{account?.data.name}</h2>
-            <p className="text-14 text-blue-25">
+            <p className="text-14 text-white">
               {account?.data.officialName}
             </p>
             <p className="text-14 font-semibold tracking-[1.1px] text-white">
@@ -58,8 +58,8 @@ const TransactionHistory = async ({ searchParams: { id, page }}:SearchParamProps
           </div>
           
           <div className='transactions-account-balance'>
-            <p className="text-14">Current balance</p>
-            <p className="text-24 text-center font-bold">{formatAmount(account?.data.currentBalance)}</p>
+            <p className="text-14 text-white">Current balance</p>
+            <p className="text-24 text-center font-bold text-white">{formatAmount(account?.data.currentBalance)}</p>
           </div>
         </div>
 
