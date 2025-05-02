@@ -16,10 +16,10 @@ export default async function RootLayout({
 
   return (
     <ThemeProvider>
-      <main className="flex h-screen w-full font-geist-sans no-scrollbar">
+      <main className="flex h-screen w-full font-geist-sans" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           <Sidebar user={loggedIn}/>
 
-          <div className="flex size-full flex-col no-scrollbar">
+          <div className="flex size-full flex-col" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             <div className="root-layout">
               <Image 
                 src="/icons/myntpay_logo-removebg-preview.png"
@@ -33,7 +33,9 @@ export default async function RootLayout({
                 />
               </div>
             </div>
-            {children}
+            <div style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+              {children}
+            </div>
           </div>
       </main>
     </ThemeProvider>

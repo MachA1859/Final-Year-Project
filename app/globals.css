@@ -505,4 +505,13 @@
   .action-btn {
     @apply text-14 rounded-lg border border-gray-300 dark:border-[#333] px-4 py-2.5 font-semibold text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20;
   }
+
+  .hide-scrollbar {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
 }

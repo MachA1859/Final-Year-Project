@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react'
 import CryptoMarketWidget from '@/components/CryptoMarketWidget'
 import CryptoAttributionFooter from '@/components/CryptoAttributionFooter'

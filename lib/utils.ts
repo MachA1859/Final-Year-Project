@@ -209,3 +209,12 @@ export const authFormSchema = (type: string) => z.object({
   email: z.string().email(),
   password: z.string().min(8),
 })
+
+export const formatCurrency = (amount: number): string => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(amount);
+};
