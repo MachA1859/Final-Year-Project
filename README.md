@@ -1,125 +1,110 @@
-# MyntPay: A Comprehensive Analysis and Implementation of a Modern Payment Gateway with Integrated Cryptocurrency Support
+# MyntPay - Payment Gateway with Integrated Cryptocurrency Support
 
-## Abstract
+## Prerequisites
 
-This project presents the design and implementation of MyntPay, a sophisticated payment gateway system that integrates traditional banking services with cryptocurrency functionality. The system addresses the growing need for unified financial platforms in the digital economy, providing a seamless interface for managing both fiat and digital currency transactions. This research explores the technical challenges and solutions in developing a modern financial application using Next.js and contemporary web technologies.
+- Node.js v18.0 or higher
+- Python 3.8 or higher
+- npm or yarn package manager
+- CUDA-capable GPU (optional, for ML model training)
 
-## Research Objectives
+## Installation
 
-1. To investigate the integration of traditional banking systems with cryptocurrency platforms
-2. To analyze the security implications of handling both fiat and digital currency transactions
-3. To evaluate the performance and scalability of real-time cryptocurrency data integration
-4. To develop a robust system architecture for financial transaction processing
-5. To implement advanced data visualization techniques for financial market analysis
+### 1. Clone the Repository
+```bash
+git clone [repository-url]
+cd final-year-project
+```
 
-## System Architecture
+### 2. Install Python Dependencies
+```bash
+pip install -r requirements.txt
+```
 
-### Core Components
+### 3. Install Node.js Dependencies
+```bash
+npm install
+# or
+yarn install
+```
 
-1. **Frontend Architecture**
-   - Next.js 14 with App Router implementation
-   - TypeScript for type safety and maintainability
-   - Tailwind CSS for responsive design implementation
-   - Component-based architecture following SOLID principles
+### 4. Set Up Environment Variables
 
-2. **Data Integration Layer**
-   - CoinGecko API integration for cryptocurrency market data
-   - TradingView widget implementation for technical analysis
-   - Real-time data processing and caching mechanisms
+Create a `.env.local` file in the root directory with the following variables:
 
-3. **Security Implementation**
-   - Transaction monitoring system
-   - Suspicious activity detection algorithms
-   - Secure data transmission protocols
+```env
+# Appwrite Configuration
+NEXT_PUBLIC_APPWRITE_URL=your_appwrite_url
+NEXT_PUBLIC_APPWRITE_PROJECT_ID=your_project_id
+NEXT_PUBLIC_APPWRITE_DATABASE_ID=your_database_id
+NEXT_PUBLIC_APPWRITE_STORAGE_ID=your_storage_id
+NEXT_PUBLIC_APPWRITE_USER_COLLECTION_ID=your_user_collection_id
+NEXT_PUBLIC_APPWRITE_BANK_COLLECTION_ID=your_bank_collection_id
+NEXT_PUBLIC_APPWRITE_TRANSACTION_COLLECTION_ID=your_transaction_collection_id
+NEXT_APPWRITE_KEY=your_appwrite_key
 
-## Implementation Details
+# Plaid Configuration
+PLAID_CLIENT_ID=your_plaid_client_id
+PLAID_SECRET=your_plaid_secret
 
-### Banking Module
-- Implementation of transaction history tracking
-- Development of payment transfer protocols
-- Design of account management interfaces
-- Integration of real-time balance updates
+# Dwolla Configuration
+DWOLLA_ENV=sandbox
+DWOLLA_KEY=your_dwolla_key
+DWOLLA_SECRET=your_dwolla_secret
 
-### Cryptocurrency Module
-- Real-time market data processing
-- Implementation of interactive charting systems
-- Development of cryptocurrency portfolio tracking
-- Market analysis tools implementation
+# Twilio Configuration
+TWILIO_ACCOUNT_SID=your_twilio_sid
+TWILIO_AUTH_TOKEN=your_twilio_token
+TWILIO_PHONE_NUMBER=your_twilio_phone
+```
 
-## Technical Specifications
+### 5. Train the ML Model
 
-### Development Environment
-- Node.js v18.0+
-- TypeScript 5.0+
-- Next.js 14
-- Tailwind CSS 3.0+
+```bash
+cd mynt_condition/suspicion_model
+python train_and_analyze.py
+```
 
-### API Integration
-- CoinGecko API v3
-- TradingView Widget API
-- Custom RESTful endpoints
+### 6. Run the Development Server
 
-## Research Methodology
+```bash
+npm run dev
+# or
+yarn dev
+```
 
-1. **Literature Review**
-   - Analysis of existing payment gateway systems
-   - Study of cryptocurrency integration patterns
-   - Review of security best practices
+The application will be available at `http://localhost:3000`
 
-2. **System Design**
-   - Requirements analysis
-   - Architecture design
-   - Component specification
+## Project Structure
 
-3. **Implementation**
-   - Agile development methodology
-   - Continuous integration and deployment
-   - Performance optimization
+```
+final-year-project/
+├── app/                    # Next.js application routes
+├── components/            # React components
+├── lib/                   # Utility functions and configurations
+├── mynt_condition/        # Machine learning model
+│   └── suspicion_model/   # Fraud detection model
+├── public/               # Static assets
+└── appwrite/             # Appwrite cloud functions
+```
 
-4. **Testing and Evaluation**
-   - Security testing
-   - Performance benchmarking
-   - User experience evaluation
+## Features
 
-## Results and Discussion
+- User Authentication with 2FA
+- Real-time Transaction Monitoring
+- Fraud Detection using ML
+- Bank Account Integration
+- Payment Processing
+- Cryptocurrency Support
+- Transaction Analytics
 
-The implementation demonstrates:
-- Successful integration of traditional and cryptocurrency systems
-- Efficient real-time data processing
-- Robust security measures
-- Scalable architecture design
+## API Integration
 
-## Future Research Directions
-
-1. Implementation of machine learning algorithms for transaction analysis
-2. Development of advanced trading features
-3. Integration of additional cryptocurrency platforms
-4. Enhancement of security protocols
-5. Implementation of multi-language support
-
-## References
-
-1. Next.js Documentation (2024)
-2. CoinGecko API Documentation
-3. TradingView Widget API Documentation
-4. Modern Web Development Best Practices
-5. Cryptocurrency Market Analysis Techniques
-
-## Acknowledgments
-
-This research was conducted as part of the Master's degree program in Computer Science. Special thanks to:
-- CoinGecko for providing cryptocurrency market data
-- TradingView for technical analysis tools
-- The Next.js development team for the framework
-- Academic advisors and research supervisors
+The application integrates with several third-party services:
+- Appwrite (Backend as a Service)
+- Plaid (Banking API)
+- Dwolla (Payment Processing)
+- Twilio (SMS Verification)
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Details
-
-For academic inquiries or research collaboration:
-- Email: m.lapczynski@se22.qmul.ac.uk
-- University: Queen Mary's University of London (QMUL)
-- Department: EECS
+This project is licensed under the MIT License - see the LICENSE file for details.

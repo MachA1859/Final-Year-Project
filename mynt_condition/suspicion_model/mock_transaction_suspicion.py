@@ -1,5 +1,3 @@
-from datetime import datetime
-
 transactions = [
   {
     "id": "1",
@@ -20,9 +18,9 @@ transactions = [
     "oldbalanceDest": 5000.0,
     "newbalanceDest": 5045.67,
     "isFraud": null,
-    "suspicion": 1.43,
+    "suspicion": 1.73,
     "model_score": 1.0,
-    "amount_score": 1.58
+    "amount_score": 1.97
   },
   {
     "id": "2",
@@ -43,9 +41,9 @@ transactions = [
     "oldbalanceDest": 954.33,
     "newbalanceDest": 25954.33,
     "isFraud": null,
-    "suspicion": 7.53,
-    "model_score": 1.01,
-    "amount_score": 9.71
+    "suspicion": 7.67,
+    "model_score": 1.0,
+    "amount_score": 9.89
   },
   {
     "id": "3",
@@ -66,9 +64,9 @@ transactions = [
     "oldbalanceDest": 10000.0,
     "newbalanceDest": 10015.99,
     "isFraud": null,
-    "suspicion": 1.44,
+    "suspicion": 1.2,
     "model_score": 1.0,
-    "amount_score": 1.59
+    "amount_score": 1.27
   },
   {
     "id": "4",
@@ -89,9 +87,9 @@ transactions = [
     "oldbalanceDest": 2000.0,
     "newbalanceDest": 2350.2,
     "isFraud": null,
-    "suspicion": 2.82,
+    "suspicion": 3.5,
     "model_score": 1.0,
-    "amount_score": 3.43
+    "amount_score": 4.33
   },
   {
     "id": "5",
@@ -112,9 +110,9 @@ transactions = [
     "oldbalanceDest": 3000.0,
     "newbalanceDest": 3785.5,
     "isFraud": null,
-    "suspicion": 3.99,
+    "suspicion": 3.97,
     "model_score": 1.0,
-    "amount_score": 4.99
+    "amount_score": 4.96
   },
   {
     "id": "6",
@@ -135,9 +133,9 @@ transactions = [
     "oldbalanceDest": 50000.0,
     "newbalanceDest": 50120.75,
     "isFraud": null,
-    "suspicion": 2.73,
+    "suspicion": 2.98,
     "model_score": 1.0,
-    "amount_score": 3.3
+    "amount_score": 3.64
   },
   {
     "id": "7",
@@ -158,9 +156,9 @@ transactions = [
     "oldbalanceDest": 25703.89,
     "newbalanceDest": 25706.39,
     "isFraud": null,
-    "suspicion": 1.4,
-    "model_score": 1.01,
-    "amount_score": 1.53
+    "suspicion": 1.69,
+    "model_score": 1.0,
+    "amount_score": 1.91
   },
   {
     "id": "8",
@@ -181,9 +179,9 @@ transactions = [
     "oldbalanceDest": 1000.0,
     "newbalanceDest": 1029.99,
     "isFraud": null,
-    "suspicion": 1.48,
+    "suspicion": 1.46,
     "model_score": 1.0,
-    "amount_score": 1.64
+    "amount_score": 1.61
   },
   {
     "id": "9",
@@ -204,9 +202,9 @@ transactions = [
     "oldbalanceDest": 2000.0,
     "newbalanceDest": 5000.0,
     "isFraud": null,
-    "suspicion": 6.61,
+    "suspicion": 6.39,
     "model_score": 1.0,
-    "amount_score": 8.48
+    "amount_score": 8.19
   },
   {
     "id": "10",
@@ -227,9 +225,9 @@ transactions = [
     "oldbalanceDest": 3000.0,
     "newbalanceDest": 3065.0,
     "isFraud": null,
-    "suspicion": 1.78,
+    "suspicion": 2.06,
     "model_score": 1.0,
-    "amount_score": 2.04
+    "amount_score": 2.42
   },
   {
     "id": "11",
@@ -250,9 +248,9 @@ transactions = [
     "oldbalanceDest": 8000.0,
     "newbalanceDest": 12500.0,
     "isFraud": null,
-    "suspicion": 6.48,
+    "suspicion": 6.07,
     "model_score": 1.0,
-    "amount_score": 8.3
+    "amount_score": 7.76
   },
   {
     "id": "12",
@@ -273,9 +271,9 @@ transactions = [
     "oldbalanceDest": 9000.0,
     "newbalanceDest": 12800.0,
     "isFraud": null,
-    "suspicion": 6.18,
+    "suspicion": 6.3,
     "model_score": 1.0,
-    "amount_score": 7.91
+    "amount_score": 8.06
   },
   {
     "id": "13",
@@ -296,9 +294,9 @@ transactions = [
     "oldbalanceDest": 10000.0,
     "newbalanceDest": 14200.0,
     "isFraud": null,
-    "suspicion": 6.55,
+    "suspicion": 5.89,
     "model_score": 1.0,
-    "amount_score": 8.41
+    "amount_score": 7.52
   },
   {
     "id": "14",
@@ -319,9 +317,9 @@ transactions = [
     "oldbalanceDest": 9000.0,
     "newbalanceDest": 12500.0,
     "isFraud": null,
-    "suspicion": 6.46,
+    "suspicion": 6.56,
     "model_score": 1.0,
-    "amount_score": 8.28
+    "amount_score": 8.42
   },
   {
     "id": "15",
@@ -342,9 +340,9 @@ transactions = [
     "oldbalanceDest": 4000.0,
     "newbalanceDest": 4120.0,
     "isFraud": null,
-    "suspicion": 2.68,
+    "suspicion": 3.46,
     "model_score": 1.0,
-    "amount_score": 3.24
+    "amount_score": 4.27
   },
   {
     "id": "16",
@@ -365,9 +363,9 @@ transactions = [
     "oldbalanceDest": 25486.9,
     "newbalanceDest": 25986.9,
     "isFraud": null,
-    "suspicion": 4.66,
+    "suspicion": 3.67,
     "model_score": 1.0,
-    "amount_score": 5.88
+    "amount_score": 4.56
   },
   {
     "id": "17",
@@ -388,9 +386,9 @@ transactions = [
     "oldbalanceDest": 5000.0,
     "newbalanceDest": 5035.0,
     "isFraud": null,
-    "suspicion": 1.16,
+    "suspicion": 1.44,
     "model_score": 1.0,
-    "amount_score": 1.21
+    "amount_score": 1.59
   },
   {
     "id": "18",
@@ -411,9 +409,9 @@ transactions = [
     "oldbalanceDest": 6000.0,
     "newbalanceDest": 6120.0,
     "isFraud": null,
-    "suspicion": 3.42,
+    "suspicion": 3.46,
     "model_score": 1.0,
-    "amount_score": 4.22
+    "amount_score": 4.28
   },
   {
     "id": "19",
@@ -434,9 +432,9 @@ transactions = [
     "oldbalanceDest": 7000.0,
     "newbalanceDest": 7045.75,
     "isFraud": null,
-    "suspicion": 1.72,
+    "suspicion": 1.69,
     "model_score": 1.0,
-    "amount_score": 1.97
+    "amount_score": 1.93
   },
   {
     "id": "20",
@@ -457,9 +455,9 @@ transactions = [
     "oldbalanceDest": 25786.15,
     "newbalanceDest": 26786.15,
     "isFraud": null,
-    "suspicion": 5.65,
-    "model_score": 1.01,
-    "amount_score": 7.2
+    "suspicion": 5.86,
+    "model_score": 1.0,
+    "amount_score": 7.48
   },
   {
     "id": "21",
@@ -480,9 +478,9 @@ transactions = [
     "oldbalanceDest": 8000.0,
     "newbalanceDest": 11600.0,
     "isFraud": null,
-    "suspicion": 6.51,
+    "suspicion": 6.62,
     "model_score": 1.0,
-    "amount_score": 8.34
+    "amount_score": 8.49
   },
   {
     "id": "22",
@@ -503,9 +501,9 @@ transactions = [
     "oldbalanceDest": 9000.0,
     "newbalanceDest": 13000.0,
     "isFraud": null,
-    "suspicion": 6.22,
+    "suspicion": 6.33,
     "model_score": 1.0,
-    "amount_score": 7.95
+    "amount_score": 8.11
   },
   {
     "id": "23",
@@ -526,9 +524,9 @@ transactions = [
     "oldbalanceDest": 10000.0,
     "newbalanceDest": 10075.5,
     "isFraud": null,
-    "suspicion": 1.95,
+    "suspicion": 2.44,
     "model_score": 1.0,
-    "amount_score": 2.26
+    "amount_score": 2.92
   },
   {
     "id": "24",
@@ -549,9 +547,9 @@ transactions = [
     "oldbalanceDest": 26630.4,
     "newbalanceDest": 26880.4,
     "isFraud": null,
-    "suspicion": 3.08,
-    "model_score": 1.01,
-    "amount_score": 3.77
+    "suspicion": 3.17,
+    "model_score": 1.0,
+    "amount_score": 3.89
   },
   {
     "id": "25",
@@ -572,9 +570,9 @@ transactions = [
     "oldbalanceDest": 11000.0,
     "newbalanceDest": 11150.0,
     "isFraud": null,
-    "suspicion": 2.5,
+    "suspicion": 3.45,
     "model_score": 1.0,
-    "amount_score": 3.0
+    "amount_score": 4.27
   },
   {
     "id": "26",
@@ -595,9 +593,9 @@ transactions = [
     "oldbalanceDest": 12000.0,
     "newbalanceDest": 12200.0,
     "isFraud": null,
-    "suspicion": 3.31,
+    "suspicion": 2.73,
     "model_score": 1.0,
-    "amount_score": 4.07
+    "amount_score": 3.31
   },
   {
     "id": "27",
@@ -618,9 +616,9 @@ transactions = [
     "oldbalanceDest": 13000.0,
     "newbalanceDest": 13450.0,
     "isFraud": null,
-    "suspicion": 3.01,
+    "suspicion": 3.52,
     "model_score": 1.0,
-    "amount_score": 3.68
+    "amount_score": 4.36
   },
   {
     "id": "28",
@@ -641,9 +639,9 @@ transactions = [
     "oldbalanceDest": 26080.4,
     "newbalanceDest": 26830.4,
     "isFraud": null,
-    "suspicion": 4.45,
+    "suspicion": 4.11,
     "model_score": 1.0,
-    "amount_score": 5.6
+    "amount_score": 5.15
   },
   {
     "id": "29",
@@ -664,9 +662,9 @@ transactions = [
     "oldbalanceDest": 14000.0,
     "newbalanceDest": 14100.0,
     "isFraud": null,
-    "suspicion": 3.39,
+    "suspicion": 2.9,
     "model_score": 1.0,
-    "amount_score": 4.19
+    "amount_score": 3.54
   },
   {
     "id": "30",
@@ -687,9 +685,9 @@ transactions = [
     "oldbalanceDest": 15000.0,
     "newbalanceDest": 15060.0,
     "isFraud": null,
-    "suspicion": 1.93,
+    "suspicion": 1.95,
     "model_score": 1.0,
-    "amount_score": 2.24
+    "amount_score": 2.27
   },
   {
     "id": "31",
@@ -710,9 +708,9 @@ transactions = [
     "oldbalanceDest": 16000.0,
     "newbalanceDest": 16350.0,
     "isFraud": null,
-    "suspicion": 3.33,
+    "suspicion": 3.43,
     "model_score": 1.0,
-    "amount_score": 4.11
+    "amount_score": 4.24
   },
   {
     "id": "32",
@@ -733,9 +731,9 @@ transactions = [
     "oldbalanceDest": 26320.4,
     "newbalanceDest": 26470.4,
     "isFraud": null,
-    "suspicion": 3.33,
-    "model_score": 1.01,
-    "amount_score": 4.1
+    "suspicion": 3.26,
+    "model_score": 1.0,
+    "amount_score": 4.01
   },
   {
     "id": "33",
@@ -756,9 +754,9 @@ transactions = [
     "oldbalanceDest": 17000.0,
     "newbalanceDest": 17120.0,
     "isFraud": null,
-    "suspicion": 3.5,
+    "suspicion": 2.96,
     "model_score": 1.0,
-    "amount_score": 4.33
+    "amount_score": 3.61
   },
   {
     "id": "34",
@@ -779,9 +777,9 @@ transactions = [
     "oldbalanceDest": 18000.0,
     "newbalanceDest": 18150.0,
     "isFraud": null,
-    "suspicion": 3.59,
+    "suspicion": 2.6,
     "model_score": 1.0,
-    "amount_score": 4.45
+    "amount_score": 3.14
   },
   {
     "id": "35",
@@ -802,9 +800,9 @@ transactions = [
     "oldbalanceDest": 19000.0,
     "newbalanceDest": 19250.0,
     "isFraud": null,
-    "suspicion": 2.96,
+    "suspicion": 2.51,
     "model_score": 1.0,
-    "amount_score": 3.62
+    "amount_score": 3.01
   },
   {
     "id": "36",
@@ -825,9 +823,9 @@ transactions = [
     "oldbalanceDest": 25950.4,
     "newbalanceDest": 27150.4,
     "isFraud": null,
-    "suspicion": 5.48,
+    "suspicion": 5.38,
     "model_score": 1.0,
-    "amount_score": 6.98
+    "amount_score": 6.84
   },
   {
     "id": "37",
@@ -848,9 +846,9 @@ transactions = [
     "oldbalanceDest": 20000.0,
     "newbalanceDest": 20085.0,
     "isFraud": null,
-    "suspicion": 2.49,
+    "suspicion": 2.07,
     "model_score": 1.0,
-    "amount_score": 2.98
+    "amount_score": 2.42
   },
   {
     "id": "38",
@@ -871,9 +869,9 @@ transactions = [
     "oldbalanceDest": 21000.0,
     "newbalanceDest": 23500.0,
     "isFraud": null,
-    "suspicion": 4.96,
-    "model_score": 1.01,
-    "amount_score": 6.28
+    "suspicion": 4.76,
+    "model_score": 1.0,
+    "amount_score": 6.02
   },
   {
     "id": "39",
@@ -894,9 +892,9 @@ transactions = [
     "oldbalanceDest": 22000.0,
     "newbalanceDest": 22180.0,
     "isFraud": null,
-    "suspicion": 2.84,
+    "suspicion": 3.28,
     "model_score": 1.0,
-    "amount_score": 3.45
+    "amount_score": 4.05
   },
   {
     "id": "40",
@@ -917,9 +915,9 @@ transactions = [
     "oldbalanceDest": 26855.4,
     "newbalanceDest": 27155.4,
     "isFraud": null,
-    "suspicion": 2.88,
+    "suspicion": 2.95,
     "model_score": 1.0,
-    "amount_score": 3.5
+    "amount_score": 3.6
   },
   {
     "id": "41",
@@ -940,9 +938,9 @@ transactions = [
     "oldbalanceDest": 23000.0,
     "newbalanceDest": 23045.0,
     "isFraud": null,
-    "suspicion": 1.49,
+    "suspicion": 1.72,
     "model_score": 1.0,
-    "amount_score": 1.65
+    "amount_score": 1.96
   },
   {
     "id": "42",
@@ -963,9 +961,9 @@ transactions = [
     "oldbalanceDest": 24000.0,
     "newbalanceDest": 24040.0,
     "isFraud": null,
-    "suspicion": 1.71,
+    "suspicion": 1.53,
     "model_score": 1.0,
-    "amount_score": 1.94
+    "amount_score": 1.71
   },
   {
     "id": "43",
@@ -986,9 +984,9 @@ transactions = [
     "oldbalanceDest": 25000.0,
     "newbalanceDest": 25065.0,
     "isFraud": null,
-    "suspicion": 1.79,
+    "suspicion": 2.21,
     "model_score": 1.0,
-    "amount_score": 2.05
+    "amount_score": 2.61
   },
   {
     "id": "44",
@@ -1009,9 +1007,9 @@ transactions = [
     "oldbalanceDest": 27005.4,
     "newbalanceDest": 27205.4,
     "isFraud": null,
-    "suspicion": 3.51,
+    "suspicion": 3.36,
     "model_score": 1.0,
-    "amount_score": 4.34
+    "amount_score": 4.14
   },
   {
     "id": "45",
@@ -1032,9 +1030,9 @@ transactions = [
     "oldbalanceDest": 26000.0,
     "newbalanceDest": 26090.0,
     "isFraud": null,
-    "suspicion": 1.99,
+    "suspicion": 1.84,
     "model_score": 1.0,
-    "amount_score": 2.33
+    "amount_score": 2.11
   },
   {
     "id": "46",
@@ -1055,9 +1053,9 @@ transactions = [
     "oldbalanceDest": 27000.0,
     "newbalanceDest": 30200.0,
     "isFraud": null,
-    "suspicion": 6.25,
+    "suspicion": 6.33,
     "model_score": 1.0,
-    "amount_score": 8.01
+    "amount_score": 8.11
   },
   {
     "id": "47",
@@ -1078,9 +1076,9 @@ transactions = [
     "oldbalanceDest": 28000.0,
     "newbalanceDest": 28120.0,
     "isFraud": null,
-    "suspicion": 2.82,
+    "suspicion": 2.56,
     "model_score": 1.0,
-    "amount_score": 3.43
+    "amount_score": 3.08
   },
   {
     "id": "48",
@@ -1101,9 +1099,9 @@ transactions = [
     "oldbalanceDest": 29000.0,
     "newbalanceDest": 29150.0,
     "isFraud": null,
-    "suspicion": 3.34,
+    "suspicion": 2.87,
     "model_score": 1.0,
-    "amount_score": 4.12
+    "amount_score": 3.49
   },
   {
     "id": "49",
@@ -1124,9 +1122,9 @@ transactions = [
     "oldbalanceDest": 30000.0,
     "newbalanceDest": 32800.0,
     "isFraud": null,
-    "suspicion": 4.99,
+    "suspicion": 5.18,
     "model_score": 1.0,
-    "amount_score": 6.32
+    "amount_score": 6.57
   },
   {
     "id": "50",
@@ -1147,47 +1145,8 @@ transactions = [
     "oldbalanceDest": 26800.4,
     "newbalanceDest": 26850.4,
     "isFraud": null,
-    "suspicion": 1.76,
+    "suspicion": 2.31,
     "model_score": 1.0,
-    "amount_score": 2.01
+    "amount_score": 2.75
   }
 ]
-
-def export_transactions_for_table():
-    """
-    Exports transaction data in a format suitable for the TSX table.
-    Returns a list of dictionaries with the required fields.
-    """
-    table_data = []
-    for transaction in transactions:
-        # Format the date to be more readable
-        date_obj = datetime.fromisoformat(transaction['date'].replace('Z', '+00:00'))
-        formatted_date = date_obj.strftime('%b %d, %Y %I:%M %p')
-        
-        # Determine status based on pending flag
-        status = "Pending" if transaction.get('pending', False) else "Completed"
-        
-        # Format amount with currency symbol and color based on type
-        amount = f"${abs(transaction['amount']):,.2f}"
-        if transaction['type'] == 'debit':
-            amount = f"-{amount}"
-        
-        # Format suspicion score with color
-        suspicion = f"{transaction['suspicion']:.2f}"
-        
-        table_data.append({
-            'transaction': transaction['name'],
-            'amount': amount,
-            'status': status,
-            'date': formatted_date,
-            'channel': transaction['paymentChannel'],
-            'category': transaction['category'],
-            'suspicion': suspicion,
-            'id': transaction['id']  # Keep ID for potential actions
-        })
-    
-    return table_data
-
-# Example usage:
-# table_data = export_transactions_for_table()
-# print(table_data)
